@@ -37,7 +37,7 @@
 
 #本地库和远程库交互
 ```
-
+远程仓库创建好后，将远程仓库地址保存到本地git 创建别名
 ```
 
 #GIT命令
@@ -156,4 +156,15 @@ git checkout [branch]
 ### 合并分支
 ```
 git merge [branch]
+```
+
+## 创建别名
+```
+git remote -v
+```
+
+## 查看别名
+```
+git remote add [别名] [URL]
+[URL] 远程仓库的地址
 ```
