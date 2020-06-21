@@ -4,4 +4,8 @@ cccc
 dddd
 eeee
 
+<<<<<<< HEAD
 主分支添加内容
+=======
+分支01
+>>>>>>> branch01
