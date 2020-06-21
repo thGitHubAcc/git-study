@@ -30,15 +30,23 @@
 
 2. 删除冲突的标记符
 
-
 3. 重新commit提交 此时不需要带文件名 
+
+=================================
+在冲突情况下  先拉去文件内容，修改冲突后再进行推送。（不拉取 会提示推送失败）
+
+
 ```
 
 
 # 本地库和远程库交互
 ```
 远程仓库创建好后，将远程仓库地址保存到本地git 创建别名
+
+克隆远程仓库到本地
 ```
+
+
 
 # GIT命令
 
@@ -151,6 +159,8 @@ git breanch [branch]
 ### 切换分支
 ```
 git checkout [branch]
+
+git heckout [远程库别名]/[branch]
 ```
 
 ### 合并分支
@@ -158,12 +168,12 @@ git checkout [branch]
 git merge [branch]
 ```
 
-## 创建别名
+## 查看别名
 ```
 git remote -v
 ```
 
-## 查看别名
+## 创建别名
 ```
 git remote add [远程库别名] [URL]
 [URL] 远程仓库的地址
@@ -172,5 +182,90 @@ git remote add [远程库别名] [URL]
 ## 推送
 ```
 git push [远程库别名] [branch]
+
+push 到远程库中，不同的用户要先加入团队后才能进行push操作
+
+github网站中，Setting -> Manage access -> invite a collababorator 邀请成员
+
+复制邀请链接 发送给成员
+```
+
+## 克隆
+```
+git clone [URL]
+```
+
+## pull（fetch + merge）
+```
+git fetch [远程库别名] [branch] (只是将内容下载下来，工作区中的文件没有更新)
+
+git merge [远程库别名]/master
+
+
+git pull [远程库别名]/[branch]
+
+```
+
+## 免密操作
+```
+1. 进入用户的主目录：
+cd ~
+
+2. 执行命令，生成一个.ssh目录
+ssh-keygen -t rsa -C [email] 
+[email] 邮箱为github注册账号cd
+
+3.打开id_rad.pub文件，复制其中内容
+
+4.在github网站中将复制内容 添加到SSH KEY中（头像 -> settings -> SSH and GPG KEY）
+
+5.给SSH地址 起别名
+```
+
+
+# idea 初始化本地库
+```
+1.先设置好idea的git路径 
+file -> setting -> version control -> git -> Path to Git executable
+选中git安装路径/bin/git.exe 
+
+
+2. 初始化本地仓库
+VCS -> import into version Control -> create Git Repository -> 选中当前的工作空间
+生成了.git 目录 初始化完成
+```
+
+# idea 提交
+```
+右键文件 -> git -> add / commit
+```
+
+# 本地库和远程库建立连接
+## 先拉取远程库内容
+```
+git bash
+git push  [远程仓库别名] [branch] --allow-unrelated-histories
+git push  [URL] --allow-unrelated-histories
+
+```
+## 推送本地库内容
+```
+git bash
+git push -u [URL] master -f
+```
+
+# idea 推送远程库
+```
+右键 -> Git -> Repository -> Push/Pull
+```
+
+# idea 克隆远程仓库
+```
+project from version control
+```
+
+# idea 处理冲突
+```
+push以后 若有冲突 先进性合并 再push
 
 ```
