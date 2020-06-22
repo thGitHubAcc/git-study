@@ -158,12 +158,12 @@ git checkout [branch]
 git merge [branch]
 ```
 
-## 创建别名
+## 查看别名
 ```
 git remote -v
 ```
 
-## 查看别名
+## 创建别名
 ```
 git remote add [远程库别名] [URL]
 [URL] 远程仓库的地址
