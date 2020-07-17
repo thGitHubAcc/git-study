@@ -152,7 +152,7 @@ git branch -v 查看各个分支
 
 ### 创建分支
 ```
-git breanch [branch]
+git branch [branch]
 [branch] 分支名
 ```
 
@@ -160,7 +160,7 @@ git breanch [branch]
 ```
 git checkout [branch]
 
-git heckout [远程库别名]/[branch]
+git checkout [远程库别名]/[branch]
 ```
 
 ### 合并分支

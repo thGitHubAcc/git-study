@@ -49,3 +49,10 @@ select PG_TERMINATE_BACKEND(pid); # 可关闭 空闲的会话
 ```sql
 COALESCE(field, 0)
 ```
+
+## 标索引
+```sql
+ROW_NUMBER() OVER (partition by [] order by []) AS index
+partition by 分析函数 
+给数据表上索引 若需要去重，可以 使用 index = 1
+```

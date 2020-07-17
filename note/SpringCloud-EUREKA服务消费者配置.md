@@ -96,6 +96,33 @@ public class FeignAuthConfiguration {
 
 ```
 
+4.1 配置熔断
+```java
+//name = 服务名
+@FeignClient(name = "serverid",fallbackFactory = UserFeignFallback.class)
+public interface UserFeign {
+
+  //value=该服务对应的uri
+  @RequestMapping(value = "uri",method = RequestMethod.POST)
+  String test();
+}
+
+//降级策略
+@Component
+public class UserFeignFallback implements FallbackFactory<UserFeign> {
+    @Override
+    public UserFeign create(Throwable cause) {
+        return new UserFeign() {
+            @Override
+            public String test(SysUser user) {
+                System.out.println("Gateway invoke usercenter 'user/login' failed,couse by:{}",cause.getMessage());
+                return null;
+            }
+        };
+    }
+}
+```
+
 5. 配置Ribbon
 ```sh
 import com.netflix.loadbalancer.IRule;

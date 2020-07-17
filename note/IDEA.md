@@ -21,3 +21,10 @@
 </dependency>
 
 ```
+
+
+##代码整理
+ctrl + alt + I
+
+##去掉没用的import
+ctrl + alt + O
