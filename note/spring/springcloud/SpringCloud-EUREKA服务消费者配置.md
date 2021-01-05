@@ -43,6 +43,8 @@ ribbon:
     clients:
       - client 
 feign:
+  hystrix: 
+    enabled: true # 启动熔断 降级
   client:
     config:
       default:
@@ -114,7 +116,7 @@ public class UserFeignFallback implements FallbackFactory<UserFeign> {
     public UserFeign create(Throwable cause) {
         return new UserFeign() {
             @Override
-            public String test(SysUser user) {
+            public String test() {
                 System.out.println("Gateway invoke usercenter 'user/login' failed,couse by:{}",cause.getMessage());
                 return null;
             }

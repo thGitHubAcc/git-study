@@ -122,6 +122,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class Swagger2 {
 
     // swagger2的配置文件，这里可以配置swagger2的一些基本的内容，比如扫描的包等等
+    @bean
     public Docket createRestApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
@@ -365,3 +366,43 @@ public class WebSecurityConfig {
 
 ```
 
+## 数据库密码加密
+1. pom.xml
+druid依赖
+```
+<dependency>
+    <groupId>com.alibaba</groupId>
+    <artifactId>druid</artifactId>
+    <version>1.2.1</version>
+</dependency>
+```
+
+2. 到druid包路径下执行命令
+```
+java -cp druid-1.2.1.jar com.alibaba.druid.filter.config.ConfigTools you_password
+
+获取加密后的密码及公钥
+```
+
+3. aplication.yml
+```
+spring:
+  application:
+    name: ibms
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://135.125.161.109:8901/hninvdb?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+    username: hninv
+    password: UGDnXkcdOC0h7dc9QH9l6QBU/xsxlKE2nJOX2+EgsaanUev/LFhWHvelPWB1FWesQCdsbSiDQ+o7eFyYV+2hKA==
+    druid:
+      filter:
+        config:
+          enabled: true
+      connect-properties:
+        config.decrypt: true
+        # 公钥
+        config.decrypt.key: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAL8lXiDIHHelf/GLz60UavjxSEOaFliBKZ8VNuEgrG9+xeQ9/bMZIM0HrOfsJ1UDGoxWUhUZgBSzVrdYv8FRhysCAwEAAQ==
+    stat-view-servlet:
+      login-username:
+      login-password:
+```

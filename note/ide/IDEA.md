@@ -22,9 +22,38 @@
 
 ```
 
+----------------------------------------------
+打开dashbord
+.idea/workspace.xml添加
+```xml
+<component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+    <option name="contentProportion" value="0.2061776" />
+  </component>
+```
 
+
+
+
+
+----------------------------------------------
 ##代码整理
 ctrl + alt + I
 
 ##去掉没用的import
 ctrl + alt + O
+

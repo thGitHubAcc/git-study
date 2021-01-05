@@ -117,7 +117,7 @@ git log --reflog （多了 HEAD@{数字}） 指针回到当前历史版本需要
 ```
 git reset --hard [logindex]
 [logindex] 版本索引
-
+（工作区移动请谨慎！！）
 hard 参数：本地库版本指针移动的同时，重置暂存区，工作区
 mixed 参数：本地库版本指针移动的时候，暂存区移动，工作区不动
 soft 参数：只移动本地库的版本指针
@@ -161,6 +161,10 @@ git branch [branch]
 git checkout [branch]
 
 git checkout [远程库别名]/[branch]
+
+git branch -a，列出所有分支名称
+
+git checkout -b dev origin/dev，作用是checkout远程的dev分支，在本地起名为dev分支，并切换到本地的dev分支
 ```
 
 ### 合并分支

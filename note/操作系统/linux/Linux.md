@@ -4,6 +4,10 @@ su 输入密码 获取root权限
 
 ```
 
+查看进程
+ps -aux 
+
+
 切换到根目录
 ```
 cd / 
@@ -65,3 +69,19 @@ rpm -qa |grep gcj
 
 如果安装可以使用rpm -qa | grep java | xargs rpm -e --nodeps 批量卸载所有带有Java的文件  这句命令的关键字是java
 ```
+
+vi 编辑文件
+
+
+vim 文件编辑工具
+```
+1. 安装
+yum -y install vim*
+
+```
+
+
+// mv:move移动文件（延伸功能：重命名。linux系统没有专门的重命名命名）
+ 
+// 基本格式
+mv filename newname

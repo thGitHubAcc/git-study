@@ -1,0 +1,46 @@
+version: '3.3'
+services: 
+  db_mysql: 
+    image: mysql
+    restart: always
+    ports: 
+      - "3306:3306"
+      - "33060:33060"
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+  db_redis: 
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+  nginx:
+    image: nginx
+    restart: always
+    ports:
+      - "80:80"
+  mq_rabbit:
+    image: rabbitmq:3.8.8-management
+    restart: always
+    ports:
+      - "4369:4369"
+      - "5671:5671"
+      - "5672:5672"
+      - "15691:15691"
+      - "15692:15692"
+      - "25672:25672"
+      - "15671:15671"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=root
+  springboot: 
+    build:
+      context: ./springboot/
+      dockerfile: "Dockerfile" 
+    depends_on:
+      - db_mysql
+      - db_redis
+      - mq_rabbit
+    restart: always
+    ports:
+      - "8021:8021"
